@@ -16,7 +16,51 @@ registerComponent('JsonViewer', JsonViewer)
 
 const state = {
     data: {
-        json: '{a:1}'
+        json: `
+{
+    component: 'div',
+    className: 'zlj-tool-json',
+    children: [{
+        component: 'div',
+        className: 'zlj-tool-json-left',
+        children: [{
+            component: 'CodeMirror',
+            options: {
+                mode: 'json',
+                theme: 'material',
+                lineNumbers: true
+            },
+            value: '{{data.json}}',
+            onBeforeChange: '{{$onChange}}'
+        }, {
+            component: 'div',
+            className: 'zlj-tool-json-left-function',
+            children: [{
+                component: 'button',
+                type: 'button',
+                children: 'beautify',
+                onClick: '{{$beautify(data)}}'
+            }]
+        }]
+    }, {
+        component: 'div',
+        className: 'zlj-tool-json-center',
+    }, {
+        component: 'div',
+        className: 'zlj-tool-json-right',
+        children: {
+            component: 'JsonViewer',
+            theme: 'monokai',
+            displayDataTypes: false,
+            name: false,
+            onAdd: '{{$onViewerChange}}',
+            onEdit: '{{$onViewerChange}}',
+            onDelete: '{{$onViewerChange}}',
+            src: '{{$getViewerSrc(data)}}'
+        }
+    }]
+}
+`
     }
 }
 
@@ -46,6 +90,7 @@ class action {
         catch (e) {
             json = { error: e.message }
         }
+        json._notParse = true
         return json
     }
 
@@ -70,7 +115,7 @@ const view = {
                 lineNumbers: true
             },
             value: '{{data.json}}',
-            onBeforeChange: `{{$onChange}}`
+            onBeforeChange: '{{$onChange}}'
         }, {
             component: 'div',
             className: 'zlj-tool-json-left-function',

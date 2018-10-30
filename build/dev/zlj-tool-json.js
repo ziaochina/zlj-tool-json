@@ -2585,7 +2585,7 @@ Object(maka__WEBPACK_IMPORTED_MODULE_3__["registerComponent"])('CodeMirror', rea
 Object(maka__WEBPACK_IMPORTED_MODULE_3__["registerComponent"])('JsonViewer', react_json_view__WEBPACK_IMPORTED_MODULE_5___default.a);
 var state = {
   data: {
-    json: '{a:1}'
+    json: "\n{\n    component: 'div',\n    className: 'zlj-tool-json',\n    children: [{\n        component: 'div',\n        className: 'zlj-tool-json-left',\n        children: [{\n            component: 'CodeMirror',\n            options: {\n                mode: 'json',\n                theme: 'material',\n                lineNumbers: true\n            },\n            value: '{{data.json}}',\n            onBeforeChange: '{{$onChange}}'\n        }, {\n            component: 'div',\n            className: 'zlj-tool-json-left-function',\n            children: [{\n                component: 'button',\n                type: 'button',\n                children: 'beautify',\n                onClick: '{{$beautify(data)}}'\n            }]\n        }]\n    }, {\n        component: 'div',\n        className: 'zlj-tool-json-center',\n    }, {\n        component: 'div',\n        className: 'zlj-tool-json-right',\n        children: {\n            component: 'JsonViewer',\n            theme: 'monokai',\n            displayDataTypes: false,\n            name: false,\n            onAdd: '{{$onViewerChange}}',\n            onEdit: '{{$onViewerChange}}',\n            onDelete: '{{$onViewerChange}}',\n            src: '{{$getViewerSrc(data)}}'\n        }\n    }]\n}\n"
   }
 };
 var action = (_dec = Object(maka__WEBPACK_IMPORTED_MODULE_3__["actionMixin"])('base'), _dec(_class = function action(option) {
@@ -2616,6 +2616,7 @@ var action = (_dec = Object(maka__WEBPACK_IMPORTED_MODULE_3__["actionMixin"])('b
       };
     }
 
+    json._notParse = true;
     return json;
   });
 
@@ -2648,7 +2649,7 @@ var view = {
         lineNumbers: true
       },
       value: '{{data.json}}',
-      onBeforeChange: "{{$onChange}}"
+      onBeforeChange: '{{$onChange}}'
     }, {
       component: 'div',
       className: 'zlj-tool-json-left-function',
