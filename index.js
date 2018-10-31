@@ -14,9 +14,7 @@ const name = pkgJson.name
 registerComponent('CodeMirror', CodeMirror)
 registerComponent('JsonViewer', JsonViewer)
 
-const state = {
-    data: {
-        json: `
+const strJson = beautify.js(JSON.stringify(JSON5.parse(`
 {
     component: 'div',
     className: 'zlj-tool-json',
@@ -60,7 +58,13 @@ const state = {
         }
     }]
 }
-`
+`)), { indent_size: 4 })
+
+
+
+const state = {
+    data: {
+        json: strJson
     }
 }
 

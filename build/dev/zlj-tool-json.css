@@ -417,7 +417,7 @@ span.CodeMirror-selectedtext { background: none; }
 }
 .zlj-tool-json-left-function {
   position: absolute;
-  right: 10px;
+  right: 30px;
   top: 10px;
   height: 40px !important;
   z-index: 999;
